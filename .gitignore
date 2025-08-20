@@ -1,0 +1,11 @@
+# Node modules
+node_modules/
+
+chromedriver/
+
+pom.test.js
+google.selenium.test.js
+urls.json
+
+# Ignore package-lock
+package-lock.json

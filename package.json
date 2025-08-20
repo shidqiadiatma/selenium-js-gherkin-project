@@ -1,0 +1,34 @@
+{
+  "name": "selenium-javascript-project",
+  "version": "1.0.0",
+  "description": "Selenium WebDriver JavaScript project with secure dependencies",
+  "main": "index.js",
+  "scripts": {
+  "test:register:headless": "set HEADLESS=true&& npx cucumber-js --require tests/step-definitions/**/*.js tests/features/TS01-register.feature",
+  "test:register:headed": "set HEADLESS=false&& npx cucumber-js --require tests/step-definitions/**/*.js tests/features/TS01-register.feature",
+  "test:login:headless": "set HEADLESS=true&& npx cucumber-js --require tests/step-definitions/**/*.js tests/features/TS02-login.feature",
+  "test:login:headed": "set HEADLESS=false&& npx cucumber-js --require tests/step-definitions/**/*.js tests/features/TS02-login.feature",
+  "test:resetpassword:headless": "set HEADLESS=true&& npx cucumber-js --require tests/step-definitions/**/*.js tests/features/TS03-reset-password.feature",
+  "test:resetpassword:headed": "set HEADLESS=false&& npx cucumber-js --require tests/step-definitions/**/*.js tests/features/TS03-reset-password.feature",
+  "test:all:headless": "set HEADLESS=true&& npx cucumber-js --require tests/step-definitions/**/*.js tests/features/",
+  "test:all:headed": "set HEADLESS=false&& npx cucumber-js --require tests/step-definitions/**/*.js tests/features/",
+    "test:muatmuat-fixed": "node tests/muatmuat-fixed.test.js",
+    "install-drivers": "npx @puppeteer/browsers install chromedriver@latest"
+  },
+  "keywords": [
+    "selenium",
+    "webdriver",
+    "javascript",
+    "automation"
+  ],
+  "author": "Shidqi Adiatma",
+  "license": "ISC",
+  "dependencies": {
+    "@cucumber/cucumber": "^12.1.0",
+    "selenium-webdriver": "^4.34.0"
+  },
+  "devDependencies": {
+    "@puppeteer/browsers": "^2.10.6",
+    "@types/selenium-webdriver": "^4.1.21"
+  }
+}
