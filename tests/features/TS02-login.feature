@@ -1,4 +1,4 @@
-Feature: Login ke beranda
+Feature: Login
 
   Scenario: TC007 - Cek validasi gagal login dengan credential yang salah
     Given user membuka halaman login

@@ -33,7 +33,7 @@ When('user mengisi nama lengkap {string}', async function (nama) {
 
 When('user mengisi nomor whatsapp untuk register yang belum terdaftar', async function () {
   // Nomor dummy yang belum terdaftar
-  await register.fillNomorTelepon('081234567890');
+  await register.fillNomorTelepon('0817652436232');
 });
 
 When('user mengisi nomor whatsapp untuk register yang sudah terdaftar', async function () {
@@ -74,13 +74,19 @@ Then('muncul peringatan yaitu {string}', async function (expectedError) {
   }
 });
 
+Then('user berhasil diarahkan ke halaman Syarat dan Ketentuan Pengguna', async function () {
+  const text = await register.getTitleTnCText();
+  console.log('DEBUG TnC Text:', text);
+  if (!text.includes('Syarat dan Ketentuan Pengguna')) {
+    throw new Error(`Tidak menemukan judul Syarat dan Ketentuan Pengguna. Got: ${text}`);
+  }
+});
+
 Then('muncul peringatan registrasi {string}', async function (expectedError) {
   await new Promise(resolve => setTimeout(resolve, 1000));
-  await driver.wait(until.elementLocated({id: 'warningErrorText'}), 15000);
   lastErrorText = await register.getWarningErrorText();
   if (!lastErrorText) {
-    const el = await driver.findElement({id: 'warningErrorText'});
-    const html = await el.getAttribute('innerHTML');
+    const html = await register.getWarningErrorHTML();
     console.log('Isi HTML warningErrorText:', html);
   }
   if (!lastErrorText.includes(expectedError)) {
